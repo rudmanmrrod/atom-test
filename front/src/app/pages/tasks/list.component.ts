@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 // Material
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
@@ -22,8 +23,7 @@ export class ListComponent {
   email: string = '';
 
   constructor(private tasksService: TasksService, private usersService: UsersService,
-    private snackBar: MatSnackBar, private dialog: MatDialog
-  ) {}
+    private snackBar: MatSnackBar, private dialog: MatDialog, private router: Router) {}
 
   getListData() {
     this.tasksService.getList(this.email).subscribe((data) => {
@@ -34,6 +34,11 @@ export class ListComponent {
   ngOnInit() {
     this.email = this.usersService.getUserEmail();
     this.getListData();
+  }
+
+  signOut () {
+    this.usersService.logout();
+    this.router.navigate(['sign-in'])
   }
 
   setCheckValue(id: string) {

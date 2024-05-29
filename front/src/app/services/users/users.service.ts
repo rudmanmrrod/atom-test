@@ -17,10 +17,15 @@ export class UsersService {
   }
 
   public createUser(email: string) {
-    return this.http.post<UserResponse>(this.baseURL, {email})
+    return this.http.post<UserResponse>(this.baseURL, {email});
   }
 
   public getUserEmail() {
     return localStorage.getItem('userEmail') || '';
+  }
+
+  public logout() {
+    localStorage.clear();
+    return true;
   }
 }
