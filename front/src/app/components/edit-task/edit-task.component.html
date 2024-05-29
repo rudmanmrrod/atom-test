@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Edit Task</h2>
+<mat-dialog-content>
+  <app-task-form 
+    [title]="task.title"
+    [description]="task.description"
+    (onClose)="onNoClick()"
+    (onSuccess)="onSubmitData($event)"></app-task-form>
+</mat-dialog-content>

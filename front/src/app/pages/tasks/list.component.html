@@ -1,0 +1,20 @@
+<div class="container-form">
+  <h1 class="text-center">Tasks</h1>
+  <hr/>
+  <button mat-raised-button color="primary" class="mb-2" (click)="addTask()">Add Task</button>
+  <mat-list *ngFor="let task of tasksList">
+    <mat-list-item>
+      <div matListItemTitle>{{task.title}}</div>
+      <div matListItemLine>{{task.description}}</div>
+      <div matListItemMeta>
+        <mat-checkbox [checked]="task.status === 'COMPLETED' ? true : false" (click)="setCheckValue(task.id)"></mat-checkbox>
+        <button mat-icon-button aria-label="Edit button" (click)="editTask(task)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Delete button" (click)="openDeleteModal(task.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>
